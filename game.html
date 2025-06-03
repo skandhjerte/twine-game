@@ -54,6 +54,19 @@ tw-story[tags~="house1"] {
     }
   }, { once: true });
 });
+
+window.stepSound = new Audio("steps.mp3");
+window.stepSound.volume = 0.3;
+
+// Ждём, пока загрузится страница с пассажем
+document.addEventListener("click", function(e) {
+  const target = e.target;
+  if (target.tagName === "A" && target.getAttribute("href").includes("apt1n110")) {
+    // Воспроизводим звук шагов при клике на ссылку, ведущую на apt1n110
+    window.stepSound.currentTime = 0; // сбросить до начала
+    window.stepSound.play();
+  }
+});
 </script><tw-passagedata pid="1" name="Start" tags="entrance start" position="500,500" size="100,100">&lt;audio autoplay loop&gt;
   &lt;source src=&quot;https://example.com/audio.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
 &lt;/audio&gt;
